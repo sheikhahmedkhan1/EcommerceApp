@@ -52,7 +52,7 @@ const Shop = () => {
   return (
     <Box sx={{ padding: 4, backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <Typography variant="h4" align="center" gutterBottom>
-        Shop Our Products xs={12} sm={6} md={4} lg={3}
+        Shop Our Products
       </Typography>
       <Grid container justifyContent="center" spacing={7}>
         {products.map((product) => (
