@@ -52,13 +52,24 @@ const Shop = () => {
   return (
     <Box sx={{ padding: 4, backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <Typography variant="h4" align="center" gutterBottom>
-        Shop Our Products
+        Shop Our Products xs={12} sm={6} md={4} lg={3}
       </Typography>
       <Grid container justifyContent="center" spacing={7}>
         {products.map((product) => (
-          <Grid xs={12} sm={6} md={4} lg={3} key={product.id}>
+          <Grid
+            sx={{
+              height: 547,
+              minHeight: 463,
+              width: 412,
+              transition: "0.3s",
+              "&:hover": {
+                transform: "translateY(-10px)",
+              },
+            }}
+            key={product.id}
+          >
             <Paper
-              sx={{ maxWidth: 345, height: 467, border: "2px solid #F7F7F7" }}
+              sx={{ minWidth: 345, height: 547, border: "2px solid #F7F7F7" }}
               elevation={6}
             >
               <CardMedia
@@ -70,7 +81,7 @@ const Shop = () => {
               />
               <CardContent>
                 <Typography variant="h6" component="div">
-                  {product.title}
+                  {product.title.slice(0, 36)}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
                   Category: {product.category}
@@ -80,36 +91,44 @@ const Shop = () => {
                   color="text.secondary"
                   sx={{ marginY: 1 }}
                 >
-                  {product.description}
+                  {product.description.slice(0, 123)}
                 </Typography>
                 <Typography variant="h6" color="primary">
                   {`Price : ${product.price}$`}
                 </Typography>
               </CardContent>
-            </Paper>
-            <Button
-              variant="outlined"
-              sx={{
-                background:
-                  "linear-gradient(90deg, #CECCD0FF 0%, #E6ECF7FF 100%)",
-              
-                fontWeight: "bold",
-                borderRadius: "15px",
-                px: 3,
-                ml:13,
-                py: 1,
-                boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                textTransform: "none",
-                transition: "0.3s",
-                "&:hover": {
+              <Button
+                variant="outlined"
+                sx={{
                   background:
-                    "linear-gradient(90deg, #E2EAF8FF 0%, #F7F4FAFF 100%)",
-                  transform: "scale(1.05)",
-                },
-              }}
-            >
-              <NavLink style={{  color: "#0E0E0EFF",fontWeight: "normal",textDecoration:"none"}} to={`/product/${product.id}`}>View Details</NavLink>
-            </Button>
+                    "linear-gradient(90deg, #3D78C3 0%, #1C98AD 100%)",
+
+                  fontWeight: "bold",
+                  borderRadius: "7px",
+                  width: "95%",
+                  height: "10%",
+                  px: 3,
+                  ml: 1.3,
+                  mt: 8.5,
+                  py: 1,
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+                  textTransform: "none",
+                  transition: "0.3s",
+                  "&:hover": {
+                    background:
+                      "linear-gradient(90deg, #3D78C3 0%, #1C98AD 100%)",
+                    transform: "scale(1.05)",
+                  },
+                }}
+              >
+                <NavLink
+                  style={{ color: "white", textDecoration: "none" }}
+                  to={`/product/${product.id}`}
+                >
+                  View Details
+                </NavLink>
+              </Button>
+            </Paper>
           </Grid>
         ))}
       </Grid>
